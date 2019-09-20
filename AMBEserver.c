@@ -531,12 +531,12 @@ int processSocket(int sockFd, int serialFd)
 
     if (packet.start_byte != DV3K_START_BYTE) {
         fprintf(stderr, "AMBEserver: invalid start byte when reading from the socket, 0x%02X", packet.start_byte);
-        return 1;
+        return 0;
     }
 
     if (bytesRead != dv3k_packet_size(packet)) {
         fprintf(stderr, "AMBEserver: invalid length when reading from the socket, %zd=%zd", bytesRead, dv3k_packet_size(packet));
-        return 1;
+        return 0;
     }
 
     if (debug)
