@@ -529,6 +529,11 @@ int processSocket(int sockFd, int serialFd)
         return 0;
     }
 
+//    if (sizeof(packet.header) == 65132) {
+//        fprintf(stderr, "AMBEserver: error when reading header from the socket: %s\n", strerror(errno));
+//        return 0;
+//    }
+
     if (packet.start_byte != DV3K_START_BYTE) {
         fprintf(stderr, "AMBEserver: invalid start byte when reading from the socket, 0x%02X", packet.start_byte);
         return 0;
